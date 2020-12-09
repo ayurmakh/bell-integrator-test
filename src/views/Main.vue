@@ -8,8 +8,15 @@
         class="countries-table__item"
         v-for="(country, i) of deletedCountries" 
         :key="i">
-        <p>{{ country.name }}</p>
-        <button @click="addCountry(country.id)">+</button>
+        <div class="countries-table__item__name">
+          <p>{{ country.name }}</p>
+          <button @click="addCountry(country.id)">+</button>
+        </div>
+        <p class="countries-table__item__subtitle">Currencies:</p>
+        <p
+          class="countries-table__item__currency"
+          v-for="(currency, j) of country.currencies" 
+          :key="j">{{ `${j + 1}. ${currency.name}` }}</p>
       </div>
     </div>
     <div class="countries-table__right">
@@ -17,8 +24,15 @@
         class="countries-table__item"
         v-for="(country, i) of addedCountries" 
         :key="i">
-        <p>{{ country.name }}</p>
-        <button @click="deleteCountry(country.id)">-</button>
+        <div class="countries-table__item__name">
+          <p>{{ country.name }}</p>
+          <button @click="deleteCountry(country.id)">-</button>
+        </div>
+        <p class="countries-table__item__subtitle">Currencies:</p>
+        <p
+          class="countries-table__item__currency"
+          v-for="(currency, j) of country.currencies" 
+          :key="j">{{ `${j + 1}. ${currency.name}` }}</p>
       </div>
     </div>
   </div>
@@ -97,9 +111,6 @@ export default class Main extends Vue {
   }
 
   &__item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-top: 1px solid #848484;
     padding: 0 10px;
 
@@ -108,7 +119,19 @@ export default class Main extends Vue {
       width: 40px;
     }
 
+    &__name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
+    &__subtitle {
+      font-weight: 700;
+    }
+
+    &__currency {
+      margin-left: 30px;
+    }
   }
 }
 </style>
