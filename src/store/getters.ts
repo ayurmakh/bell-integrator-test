@@ -29,7 +29,7 @@ export const getters: GetterTree<State, any> = {
 
     function findEntriesCount(source: string): number {
       try {
-        return (source.match(new RegExp(filter, 'g')) || []).length;
+        return (source.toLowerCase().match(new RegExp(filter, 'g')) || []).length;
       } catch (error) {
         return 0;
       }
