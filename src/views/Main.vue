@@ -6,19 +6,19 @@
         v-model="_filter">
       <div
         class="countries-table__item"
-        v-for="(country, i) of showedCountries" 
+        v-for="(country, i) of deletedCountries" 
         :key="i">
         <p>{{ country.name }}</p>
-        <button @click="deleteCountry(country.id)">+</button>
+        <button @click="addCountry(country.id)">+</button>
       </div>
     </div>
     <div class="countries-table__right">
       <div
         class="countries-table__item"
-        v-for="(country, i) of hiddenCountries" 
+        v-for="(country, i) of addedCountries" 
         :key="i">
         <p>{{ country.name }}</p>
-        <button @click="addCountry(country.id)">-</button>
+        <button @click="deleteCountry(country.id)">-</button>
       </div>
     </div>
   </div>
@@ -42,10 +42,10 @@ export default class Main extends Vue {
   private filter!: string;
 
   @Getter
-  private getShowedCountries!: (filter: string) => Country[];
+  private getDeletedCountries!: (filter: string) => Country[];
 
   @Getter
-  private hiddenCountries!: Country[];
+  private addedCountries!: Country[];
 
   @Action
   private setFilter!: (filter: string) => void;
@@ -64,8 +64,8 @@ export default class Main extends Vue {
     this.setFilter(newFilter);
   }
 
-  get showedCountries(): Country[] {
-    return this.getShowedCountries(this._filter.toLowerCase());
+  get deletedCountries(): Country[] {
+    return this.getDeletedCountries(this._filter.toLowerCase());
   }
 }
 </script>

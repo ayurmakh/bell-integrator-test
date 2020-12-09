@@ -9,7 +9,7 @@ import { GetterTree } from 'vuex';
 
 export const getters: GetterTree<State, any> = {
 
-  getShowedCountries: (state: State) => (filter: string): Country[] => {
+  getDeletedCountries: (state: State) => (filter: string): Country[] => {
 
     function sortByEntries(country1: Country, country2: Country): number {
       const entries1 = findAllEntriesCount(country1);
@@ -35,7 +35,7 @@ export const getters: GetterTree<State, any> = {
       }
     }
 
-    const showedCountries = state.countries.filter((country: Country) => country.mode === modes.add);
+    const showedCountries = state.countries.filter((country: Country) => country.mode === modes.delete);
 
     if (filter === '') {
       return showedCountries;
@@ -44,7 +44,7 @@ export const getters: GetterTree<State, any> = {
     return showedCountries.filter((country: Country) => findAllEntriesCount(country) > 0).sort(sortByEntries);
   },
 
-  hiddenCountries: (state: State) => state.countries.filter((country: Country) => country.mode === modes.delete),
+  addedCountries: (state: State) => state.countries.filter((country: Country) => country.mode === modes.add),
 
   getHistory: (state: State) => (mode: string): HistoryItem[] => {
     if (mode === '') {

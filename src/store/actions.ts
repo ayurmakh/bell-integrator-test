@@ -17,7 +17,7 @@ export const actions: ActionTree<any, any> = {
                 name: currency.name,
               })),
               name: country.name,
-              mode: modes.add,
+              mode: modes.delete,
             }));
             commit('SET_COUNTRIES', countries);
           } catch (e) {
