@@ -32,19 +32,19 @@ export const actions: ActionTree<any, any> = {
 
   deleteCountry({ commit }, countryId: number) {
     commit('CHANGE_COUNTRY_MODE', {
-      countryId: countryId,
+      countryId,
       mode: modes.delete,
     });
   },
 
   addCountry({ commit }, countryId: number) {
     commit('CHANGE_COUNTRY_MODE', {
-      countryId: countryId,
+      countryId,
       mode: modes.add,
     });
   },
 
   setFilter({ commit}, filter: string) {
     commit('SET_FILTER', filter);
-  }
+  },
 };

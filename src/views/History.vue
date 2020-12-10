@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { HistoryItem } from '@/types';
-import Vue from 'vue'
+import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Getter } from 'vuex-class';
 import { modes } from '@/constants';

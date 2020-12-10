@@ -15,7 +15,7 @@ export const mutations: MutationTree<State> = {
     state.history.push({
       country: desiredCountry,
       date: new Date(),
-      mode: mode,
+      mode,
     });
   },
 
